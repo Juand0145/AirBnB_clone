@@ -22,16 +22,19 @@ class FileStorage():
         ''' '''
         json_objects = {}
         for key in self.__objects:
-            json_objects[key] = self.__objects[key]
-        with open(self.__file_path, 'w') as file:
-            json.dump(json_objects, file)
+            json_objects = self.__objects
+
+        with open(self.__file_path, 'w') as my_file:
+            json.dump(json_objects, my_file)
 
     def reload(self):
         ''' '''
         try:
-            with open(self.__file_path, 'r') as file:
-                json_objects = json.load(file)
+            with open(self.__file_path, 'r') as my_file:
+                json_objects = json.load(my_file)
+
             for key in json_objects:
                 self.__objects[key] = json_objects[key]
+
         except:
             pass
