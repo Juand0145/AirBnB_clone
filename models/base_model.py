@@ -26,9 +26,8 @@ class BaseModel():
                 self.updated_at = datetime.datetime.strptime(
                     kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
 
-        else:
-            storage.new(self)
-            storage.save()
+        storage.new(self)
+        storage.save()
 
     def __str__(self):
         ''' '''
