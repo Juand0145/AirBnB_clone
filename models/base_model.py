@@ -7,7 +7,7 @@ from models import storage
 
 class BaseModel():
     ''' '''
-    
+
     def __init__(self, *args, **kwargs):
         ''' '''
         self.id = str(uuid.uuid4())
@@ -27,7 +27,6 @@ class BaseModel():
                     kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
 
         storage.new(self)
-        storage.save()
 
     def __str__(self):
         ''' '''
@@ -36,7 +35,7 @@ class BaseModel():
     def save(self):
         ''' '''
         self.updated_at = datetime.datetime.now()
-        storage.save
+        storage.save()
 
     def to_dict(self):
         ''' '''

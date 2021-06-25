@@ -1,6 +1,7 @@
 #!/usr/Bin/python3
 ''' '''
 import json
+from models.base_model import BaseModel
 
 class FileStorage():
     ''' '''
@@ -15,19 +16,23 @@ class FileStorage():
         ''' '''
         if obj is not None:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            FileStorage.__objects[key] = obj.to_dict()
+            FileStorage.__objects[key] = obj
 
     def save(self):
         ''' '''
+        json_obj_dict = {}
+        for key, value in FileStorage.__objects.items():
+            json_obj_dict[key] = value.to_dict()
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as my_file:
-            json.dump(FileStorage.__objects, my_file)
+            json.dump(json_obj_dict, my_file)
 
     
     def reload(self):
         ''' '''
         try:
             with open(FileStorage.__file_path, 'r') as my_file:
-                FileStorage.__objects = json.loads(my_file)
+                for key, value in json.load(my_file).items():
+                    FileStorage.__objects[key] = BaseModel(**value)
 
         except:
             pass
