@@ -28,4 +28,10 @@ class FileStorage():
 
     def reload(self):
         ''' '''
-    
+        try:
+            with open(self.__file_path, 'r') as file:
+                json_objects = json.load(file)
+            for key in json_objects:
+                self.__objects[key] = json_objects[key]
+        except:
+            pass
