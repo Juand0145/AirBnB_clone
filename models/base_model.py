@@ -2,7 +2,7 @@
 ''' '''
 import uuid
 import datetime
-import models
+from models import storage
 
 
 class BaseModel():
@@ -27,8 +27,8 @@ class BaseModel():
                     kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
 
         else:
-            models.storage.new(self)
-            models.storage.save()
+            storage.new(self)
+            storage.save()
 
     def __str__(self):
         ''' '''
@@ -37,7 +37,7 @@ class BaseModel():
     def save(self):
         ''' '''
         self.updated_at = datetime.datetime.now()
-        models.storage.save
+        storage.save
 
     def to_dict(self):
         ''' '''
