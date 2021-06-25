@@ -1,7 +1,7 @@
 #!/usr/Bin/python3
 ''' '''
 import json
-from models.base_model import BaseModel
+
 
 class FileStorage():
     ''' '''
@@ -28,12 +28,13 @@ class FileStorage():
 
     
     def reload(self):
+        from models.base_model import BaseModel
         ''' '''
         try:
             with open(FileStorage.__file_path, 'r') as my_file:
                 for key, value in json.load(my_file).items():
-                    FileStorage.__objects[key] = BaseModel(**value)
-
+                    if key not in FileStorage.__objects:
+                        FileStorage.__objects[key] = BaseModel(**value)
         except:
             pass
 
