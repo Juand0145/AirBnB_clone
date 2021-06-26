@@ -29,7 +29,6 @@ class BaseModel():
 
     def __str__(self):
         ''' '''
-        #return "[{}] ({}) {}". format(__class__.__name__, self.id, self.__dict__)
         return "[{}] ({}) {}". format(__class__.__name__, self.id, self.__dict__)
 
     def save(self):
