@@ -37,6 +37,3 @@ class FileStorage():
                         FileStorage.__objects[key] = BaseModel(**value)
         except:
             pass
-
-        # for key in json_objects:
-        #     self.__objects[key] = json_objects[key]

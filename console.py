@@ -3,10 +3,10 @@
 import cmd
 import models
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
-classes = {'BaseModel': BaseModel()}
-
+classes = ["BaseModel", "User"]
 
 class HBNBCommand(cmd.Cmd):
     ''' '''
@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return None
 
-        elif commands[0] not in classes.keys():
+        elif commands[0] not in classes:
             print("** class doesn't exist **")
             return None
 
@@ -47,10 +47,15 @@ class HBNBCommand(cmd.Cmd):
         if commands is None:
             return
 
-        instance = classes[commands[0]]
-        storage.new(instance)
+        instance_name = commands[0]
+        if instance_name == "BaseModel":
+            new_instance = BaseModel()
+
+        if instance_name == "User":
+            new_instance = User()
+
         storage.save()
-        print(instance.id)
+        print(new_instance.id)
 
     def do_show(self, arg):
         ''' '''
@@ -60,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = "{}.{}".format(commands[0], commands[1])
-        instances_dict = models.storage.all()
+        instances_dict = storage.all()
 
         if key not in instances_dict.keys():
             print("** no instance found **")
@@ -76,31 +81,30 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = "{}.{}".format(commands[0], commands[1])
-        instances_dict = models.storage.all()
+        instances_dict = storage.all()
 
         if key not in instances_dict.keys():
             print("** no instance found **")
 
         else:
-            instances_dict.pop(key)
-            models.storage.save()
+            del instances_dict[key]
+            storage.save()
 
     def do_all(self, arg):
         ''' '''
         classes_to_print = arg.split()
-        instances_dict = models.storage.all()
+        instances_dict = storage.all()
         instances_list = []
 
         for cls in classes_to_print:
-            if cls not in classes.keys():
+            if cls not in classes:
                 print("** class doesn't exist **")
                 return None
 
         for object in instances_dict.values():
             if len(classes_to_print) > 0:
-                for cls in classes.values():
-                    if type(object) == type(cls):
-                        instances_list.append(object.__str__())
+                if object.to_dict()['__class__'] in classes_to_print:
+                    instances_list.append(object.__str__())
             else:
                 instances_list.append(object.__str__())
 
