@@ -26,7 +26,6 @@ class FileStorage():
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as my_file:
             json.dump(json_obj_dict, my_file)
 
-    
     def reload(self):
         from models.base_model import BaseModel
         from models.user import User

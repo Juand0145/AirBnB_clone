@@ -7,6 +7,7 @@ from models import storage
 
 class BaseModel():
     ''' '''
+
     def __init__(self, *args, **kwargs):
         ''' '''
         if kwargs:
@@ -29,7 +30,8 @@ class BaseModel():
 
     def __str__(self):
         ''' '''
-        return "[{}] ({}) {}". format(__class__.__name__, self.id, self.__dict__)
+        msg = "[{}] ({}) {}".format(__class__.__name__, self.id, self.__dict__)
+        return msg
 
     def save(self):
         ''' '''
@@ -44,5 +46,5 @@ class BaseModel():
             dictionary["created_at"] = self.created_at.isoformat()
         if "updated_at" in dictionary and type(self.updated_at) != str:
             dictionary["updated_at"] = self.updated_at.isoformat()
-        
+
         return dictionary

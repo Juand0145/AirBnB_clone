@@ -11,7 +11,9 @@ from models.place import Place
 from models.review import Review
 from models import storage
 
+
 classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+
 
 class HBNBCommand(cmd.Cmd):
     ''' '''
@@ -156,7 +158,8 @@ class HBNBCommand(cmd.Cmd):
             new_value = commands[3]
 
             try:
-                casted_value = cast_variable(new_value, type(getattr(object_to_update, attribute)))
+                type_attribute = type(getattr(object_to_update, attribute))
+                casted_value = cast_variable(new_value, type_attribute)
                 setattr(object_to_update, attribute, casted_value)
             except:
                 setattr(object_to_update, attribute, new_value)
