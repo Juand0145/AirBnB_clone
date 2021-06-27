@@ -4,9 +4,10 @@ import cmd
 import models
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
 from models import storage
 
-classes = ["BaseModel", "User"]
+classes = ["BaseModel", "User", "State"]
 
 class HBNBCommand(cmd.Cmd):
     ''' '''
@@ -53,6 +54,9 @@ class HBNBCommand(cmd.Cmd):
 
         if instance_name == "User":
             new_instance = User()
+
+        if instance_name == "State":
+            new_instance = State()
 
         storage.save()
         print(new_instance.id)

@@ -30,6 +30,7 @@ class FileStorage():
     def reload(self):
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
         ''' '''
         try:
             with open(FileStorage.__file_path, 'r') as my_file:
@@ -40,5 +41,7 @@ class FileStorage():
                             FileStorage.__objects[key] = BaseModel(**value)
                         elif class_create == 'User':
                             FileStorage.__objects[key] = User(**value)
+                        elif class_create == 'State':
+                            FileStorage.__objects[key] = State(**value)
         except:
             pass
