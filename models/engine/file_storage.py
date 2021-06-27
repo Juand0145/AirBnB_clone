@@ -32,6 +32,7 @@ class FileStorage():
         from models.user import User
         from models.state import State
         from models.city import City
+        from models.amenity import Amenity
         ''' '''
         try:
             with open(FileStorage.__file_path, 'r') as my_file:
@@ -46,5 +47,7 @@ class FileStorage():
                             FileStorage.__objects[key] = State(**value)
                         elif class_create == 'City':
                             FileStorage.__objects[key] = City(**value)
+                        elif class_create == 'Amenity':
+                            FileStorage.__objects[key] = Amenity(**value)
         except:
             pass
