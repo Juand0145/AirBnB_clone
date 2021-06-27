@@ -24,8 +24,11 @@ class Place(BaseModel):
         ''' '''
         dictionary = self.__dict__
         dictionary["__class__"] = __class__.__name__
-        dictionary["created_at"] = self.created_at.isoformat()
-        dictionary["updated_at"] = self.updated_at.isoformat()
+        if "created_at" in dictionary and type(self.created_at) != str:
+            dictionary["created_at"] = self.created_at.isoformat()
+        if "updated_at" in dictionary and type(self.updated_at) != str:
+            dictionary["updated_at"] = self.updated_at.isoformat()
+        
         return dictionary
 
     def __str__(self):
