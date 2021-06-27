@@ -8,9 +8,10 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
+from models.review import Review
 from models import storage
 
-classes = ["BaseModel", "User", "State", "City", "Amenity", "Place"]
+classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
 class HBNBCommand(cmd.Cmd):
     ''' '''
@@ -69,6 +70,9 @@ class HBNBCommand(cmd.Cmd):
 
         if instance_name == "Place":
             new_instance = Place()
+
+        if instance_name == "Review":
+            new_instance = Review()
 
         storage.save()
         print(new_instance.id)
