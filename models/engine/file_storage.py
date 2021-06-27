@@ -29,11 +29,16 @@ class FileStorage():
     
     def reload(self):
         from models.base_model import BaseModel
+        from models.user import User
         ''' '''
         try:
             with open(FileStorage.__file_path, 'r') as my_file:
                 for key, value in json.load(my_file).items():
                     if key not in FileStorage.__objects:
-                        FileStorage.__objects[key] = BaseModel(**value)
+                        class_create = value['__class__']
+                        if class_create == 'BaseModel':
+                            FileStorage.__objects[key] = BaseModel(**value)
+                        elif class_create == 'User':
+                            FileStorage.__objects[key] = User(**value)
         except:
             pass

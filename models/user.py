@@ -10,12 +10,17 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-my_user = User()
-my_user.first_name = "Betty"
-my_user.last_name = "Holberton"
-my_user.email = "airbnb@holbertonshool.com"
-my_user.password = "root"
-print(my_user)
+    def to_dict(self):
+        ''' '''
+        dictionary = self.__dict__
+        dictionary["__class__"] = __class__.__name__
+        dictionary["created_at"] = self.created_at.isoformat()
+        dictionary["updated_at"] = self.updated_at.isoformat()
+        return dictionary
+
+    def __str__(self):
+        ''' '''
+        return "[{}] ({}) {}". format(__class__.__name__, self.id, self.__dict__)

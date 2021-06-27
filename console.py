@@ -134,8 +134,12 @@ class HBNBCommand(cmd.Cmd):
             object_to_update = instances_dict[key]
             attribute = commands[2]
             new_value = commands[3]
-            casted_value = cast_variable(new_value, type(getattr(object_to_update, attribute)))
-            setattr(object_to_update, attribute, casted_value)
+
+            try:
+                casted_value = cast_variable(new_value, type(getattr(object_to_update, attribute)))
+                setattr(object_to_update, attribute, casted_value)
+            except:
+                setattr(object_to_update, attribute, new_value)
             object_to_update.save()
 
 
