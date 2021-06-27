@@ -8,6 +8,7 @@ class City(BaseModel):
     state_id=""
 
     def __init__(self, *args, **kwargs):
+        ''' '''
         super().__init__(*args, **kwargs)
 
     def to_dict(self):
