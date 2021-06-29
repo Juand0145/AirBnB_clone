@@ -45,7 +45,7 @@ class BaseModel:
     def to_dict(self):
         '''Create a dictionary with the attributes and add class, created at
         and updated at. '''
-        dictionary = self.__dict__
+        dictionary = self.__dict__.copy()
         dictionary["__class__"] = __class__.__name__
         if "created_at" in dictionary and type(self.created_at) != str:
             dictionary["created_at"] = self.created_at.isoformat()
