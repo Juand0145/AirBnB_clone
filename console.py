@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-''' '''
+'''This is the program that contains the entry point
+of the command interpreter'''
 import cmd
 import models
 from models.base_model import BaseModel
@@ -16,7 +17,8 @@ classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
 
 class HBNBCommand(cmd.Cmd):
-    ''' '''
+    '''Class that create a console were the commands
+    are going to be executed'''
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
@@ -30,7 +32,8 @@ class HBNBCommand(cmd.Cmd):
             exit()
 
     def verification(self, arguments, mode):
-
+        '''Is a usefull functions to verify if any of argumment is missing
+        or dont exist'''
         commands = arguments.split()
         if len(commands) == 0:
             print("** class name missing **")
@@ -48,7 +51,8 @@ class HBNBCommand(cmd.Cmd):
         return commands
 
     def do_create(self, arg):
-        ''' '''
+        '''Creates a new instance of BaseModel, saves it (to the JSON file)
+        and prints the id. Ex: $ create BaseModel'''
         commands = self.verification(arg, 0)
 
         if commands is None:
@@ -80,7 +84,8 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def do_show(self, arg):
-        ''' '''
+        ''' Prints the string representation of an instance based on the
+        class name and id. Ex: $ show BaseModel 1234-1234-1234.'''
         commands = self.verification(arg, 1)
 
         if commands is None:
@@ -96,7 +101,8 @@ class HBNBCommand(cmd.Cmd):
             print(instances_dict[key])
 
     def do_destroy(self, arg):
-        ''' '''
+        ''' Prints the string representation of an instance based on the class name
+        and id. Ex: $ show BaseModel 1234-1234-1234.'''
         commands = self.verification(arg, 1)
 
         if commands is None:
@@ -113,7 +119,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        ''' '''
+        '''Prints all string representation of all instances based
+        or not on the class name. Ex: $ all BaseModel or $ all.'''
         classes_to_print = arg.split()
         instances_dict = storage.all()
         instances_list = []
@@ -133,7 +140,9 @@ class HBNBCommand(cmd.Cmd):
         print(instances_list)
 
     def do_update(self, arg):
-        ''' '''
+        ''' Updates an instance based on the class name and id by adding
+        or updating attribute (save the change into the JSON file). Ex: $
+        update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com"'''
         commands = self.verification(arg, 1)
         if commands is None:
             return
@@ -167,7 +176,7 @@ class HBNBCommand(cmd.Cmd):
 
 
 def cast_variable(variable, new_type):
-    ''' '''
+    '''Recognize the type of the varible to be change i the update function'''
     if new_type == int:
         return int(variable)
 
