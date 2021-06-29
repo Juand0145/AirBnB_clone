@@ -22,10 +22,18 @@ class TestUser(unittest.TestCase):
         test_dict = {"id": "ff02d7e0-4254-43b3-b867-d9decb0dda13",
                      "created_at": "2021-06-28T17:47:38.773238",
                      "updated_at": "2021-06-28T17:47:38.773248",
-                     "__class__": "User"}
+                     "__class__": "User",
+                     "first_name": "Adriana",
+                     "last_name": "Echeverri",
+                     "password": "JEEEE",
+                     "email": "adriana.er98@hotmail.com"}
         test_1 = User(**test_dict)
         self.assertTrue(isinstance(test, User))
         self.assertEqual(test_1.id, "ff02d7e0-4254-43b3-b867-d9decb0dda13")
+        self.assertEqual(test_1.first_name, "Adriana")
+        self.assertEqual(test_1.last_name, "Echeverri")
+        self.assertEqual(test_1.password, "JEEEE")
+        self.assertEqual(test_1.email, "adriana.er98@hotmail.com")
         self.assertEqual(test_1.created_at, datetime.datetime(
             2021, 6, 28, 17, 47, 38, 773238))
         self.assertEqual(test_1.updated_at, datetime.datetime(
