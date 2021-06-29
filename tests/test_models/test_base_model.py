@@ -70,3 +70,33 @@ class Testbase(unittest.TestCase):
     
         str_test = "[BaseModel] ({})".format(test_1.id)
         self.assertIn(str_test, output)
+
+    def test_save(self):
+        '''Function to test the save instance method'''
+        test_1 = BaseModel()
+        update_1 = test_1.updated_at
+        test_1.save()
+        update_2 = test_1.updated_at
+        self.assertNotEqual(update_1, update_2)
+
+    def test_to_dict(self):
+        '''Function to test the instance method to_dict'''
+
+        test_1 = BaseModel()
+
+        test_1_dict = test_1.to_dict
+
+        for key, value in test_1_dict.items():
+            if type(value) == datetime.datetime:
+                value = value.isoformat()
+            else:
+                self.assertIn(str(key), )
+                self.assertIn(str(value), tets)
+
+            if key == "__class__":
+                self.assertEqual(value, "BaseModel")
+    
+        str_test = "[BaseModel] ({})".format(test_1.id)
+        self.assertIn(str_test, output)
+        
+        self.assertIn("__class__")

@@ -6,7 +6,7 @@ import datetime
 from models import storage
 
 
-class BaseModel():
+class BaseModel:
     ''' This class creates the BaseModel object.
     Attr:
         id (str): identification of the instance.
@@ -45,7 +45,7 @@ class BaseModel():
         storage.save()
 
     def to_dict(self):
-        ''' Create a dictionary with the attributes and add class, created at
+        '''Create a dictionary with the attributes and add class, created at
         and updated at. '''
         dictionary = self.__dict__
         dictionary["__class__"] = __class__.__name__
