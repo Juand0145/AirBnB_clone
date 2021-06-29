@@ -8,6 +8,10 @@ from models.base_model import BaseModel
 class TestFileStorage(unittest.TestCase):
     '''Class to test the class FileStorage'''
 
+    def setUp(self):
+        ''' Function to setup the testing '''
+        self.storage = FileStorage()
+
     def test_all(self):
         '''Testing function to check the instance method all'''
         file = FileStorage()
@@ -27,7 +31,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         '''Testing function to check the instance method save'''
-        pass
+        self.assertEqual(self.storage.save(), None)
 
     def test_reload(self):
         '''Testing function to check the instance method reload'''
