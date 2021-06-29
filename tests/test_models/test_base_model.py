@@ -64,9 +64,6 @@ class Testbase(unittest.TestCase):
         for key, value in test_1_dict.items():
             if type(value) == datetime.datetime:
                 value = value.isoformat()
-                print(type(output))
-                self.assertIn(value, output)
-
             else:
                 self.assertIn(str(key), output)
                 self.assertIn(str(value), output)
