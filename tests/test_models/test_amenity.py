@@ -2,7 +2,6 @@
 '''Testing file for the class Amenity'''
 
 import unittest
-from models import amenity
 from models.amenity import Amenity
 import datetime
 

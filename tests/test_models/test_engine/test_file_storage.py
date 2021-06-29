@@ -3,5 +3,5 @@
 import unittest
 
 
-class Testbase(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     '''Class to test the class BaseModel'''
