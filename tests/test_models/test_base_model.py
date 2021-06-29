@@ -19,13 +19,17 @@ class Testbase(unittest.TestCase):
         test.name = "Holberton"
         self.assertEqual(test.name, "Holberton")
 
-        test_dict = {"id": "ff02d7e0-4254-43b3-b867-d9decb0dda13", "created_at": "2021-06-28T17:47:38.773238",
-                     "updated_at": "2021-06-28T17:47:38.773248", "__class__": "BaseModel"}
+        test_dict = {"id": "ff02d7e0-4254-43b3-b867-d9decb0dda13",
+                     "created_at": "2021-06-28T17:47:38.773238",
+                     "updated_at": "2021-06-28T17:47:38.773248",
+                     "__class__": "BaseModel"}
         test_1 = BaseModel(**test_dict)
         self.assertTrue(isinstance(test, BaseModel))
         self.assertEqual(test_1.id, "ff02d7e0-4254-43b3-b867-d9decb0dda13")
-        self.assertEqual(test_1.created_at, datetime.datetime(2021, 6, 28, 17, 47, 38, 773238))
-        self.assertEqual(test_1.updated_at, datetime.datetime(2021, 6, 28, 17, 47, 38, 773248))
+        self.assertEqual(test_1.created_at, datetime.datetime(
+            2021, 6, 28, 17, 47, 38, 773238))
+        self.assertEqual(test_1.updated_at, datetime.datetime(
+            2021, 6, 28, 17, 47, 38, 773248))
         self.assertTrue(isinstance(test_1.id, str))
         self.assertTrue(isinstance(test_1.created_at, datetime.datetime))
         self.assertTrue(isinstance(test_1.updated_at, datetime.datetime))
@@ -33,7 +37,7 @@ class Testbase(unittest.TestCase):
         test_dict = {"__class__": "Perro"}
         test_2 = BaseModel(**test_dict)
         self.assertNotEqual(test_2.__class__, "Perro")
-        
+
         test_dict = {}
         test_3 = BaseModel(**test_dict)
         self.assertTrue(isinstance(test_3, BaseModel))
@@ -67,7 +71,7 @@ class Testbase(unittest.TestCase):
             else:
                 self.assertIn(str(key), output)
                 self.assertIn(str(value), output)
-    
+
         str_test = "[BaseModel] ({})".format(test_1.id)
         self.assertIn(str_test, output)
 
@@ -84,19 +88,24 @@ class Testbase(unittest.TestCase):
 
         test_1 = BaseModel()
 
-        test_1_dict = test_1.to_dict
+        test_1_dict = test_1.to_dict()
 
         for key, value in test_1_dict.items():
-            if type(value) == datetime.datetime:
-                value = value.isoformat()
-            else:
-                self.assertIn(str(key), )
-                self.assertIn(str(value), tets)
+            self.assertTrue(hasattr(test_1, key))
 
-            if key == "__class__":
-                self.assertEqual(value, "BaseModel")
-    
-        str_test = "[BaseModel] ({})".format(test_1.id)
-        self.assertIn(str_test, output)
-        
-        self.assertIn("__class__")
+            if key == "created_at" or key == "updated_at":
+                self.assertNotEqual(type(value), datetime.datetime)
+
+        self.assertIn("__class__", test_1_dict.keys())
+
+    def test_arguments(self):
+        '''Funtion to test more arguments to the class BaseModel'''
+        with self.assertRaises(TypeError):
+            test = BaseModel()
+            test.__str__("Perro")
+
+        with self.assertRaises(TypeError):
+            test.save("Perro")
+
+        with self.assertRaises(TypeError):
+            test.to_dict("Perro")
