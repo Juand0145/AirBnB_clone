@@ -34,9 +34,6 @@ class TestCity(unittest.TestCase):
         self.assertTrue(isinstance(test_1.created_at, datetime.datetime))
         self.assertTrue(isinstance(test_1.updated_at, datetime.datetime))
 
-        test_dict = {"__class__": "Perro"}
-        test_2 = City(**test_dict)
-        self.assertNotEqual(test_2.__class__, "Perro")
 
         test_dict = {}
         test_3 = City(**test_dict)
