@@ -42,7 +42,6 @@ class TestUser(unittest.TestCase):
         self.assertTrue(isinstance(test_1.created_at, datetime.datetime))
         self.assertTrue(isinstance(test_1.updated_at, datetime.datetime))
 
-
         test_dict = {}
         test_3 = User(**test_dict)
         self.assertTrue(isinstance(test_3, User))
