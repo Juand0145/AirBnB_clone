@@ -21,8 +21,7 @@ class Testbase(unittest.TestCase):
 
         test_dict = {"id": "ff02d7e0-4254-43b3-b867-d9decb0dda13",
                      "created_at": "2021-06-28T17:47:38.773238",
-                     "updated_at": "2021-06-28T17:47:38.773248",
-                     "__class__": "BaseModel"}
+                     "updated_at": "2021-06-28T17:47:38.773248"}
         test_1 = BaseModel(**test_dict)
         self.assertTrue(isinstance(test, BaseModel))
         self.assertEqual(test_1.id, "ff02d7e0-4254-43b3-b867-d9decb0dda13")

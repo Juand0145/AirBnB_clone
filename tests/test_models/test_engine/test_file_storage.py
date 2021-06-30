@@ -73,8 +73,7 @@ class TestFileStorage(unittest.TestCase):
         '''Testing function to check methods with more arguments'''
         dictionary = {"id": "64a8e9f5-4840-431c-9305-baff80edd778",
                       "created_at": "2021-06-30T10:45:57.274432",
-                      "updated_at": "2021-06-30T10:45:57.274432",
-                      "__class__": "BaseModel"}
+                      "updated_at": "2021-06-30T10:45:57.274432"}
         test = BaseModel(**dictionary)
         with self.assertRaises(TypeError):
             self.storage.new(test, test)
