@@ -21,6 +21,9 @@ class HBNBCommand(cmd.Cmd):
     are going to be executed'''
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        pass
+
     def do_quit(self, arg):
         ''' Quit program to exit the program'''
         if arg is not None:
