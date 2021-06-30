@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Testing file for the class FileStorage"""
-from typing import Type
 import unittest
 import json
 from models.engine.file_storage import FileStorage
