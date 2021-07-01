@@ -22,6 +22,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def emptyline(self):
+        ''' Pass when empty line is passed or just enter. '''
         pass
 
     def do_quit(self, arg):
