@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 '''Testing file for the class Amenity'''
+
 import unittest
 from models.amenity import Amenity
 import datetime
@@ -20,7 +21,8 @@ class TestAmenity(unittest.TestCase):
 
         test_dict = {"id": "ff02d7e0-4254-43b3-b867-d9decb0dda13",
                      "created_at": "2021-06-28T17:47:38.773238",
-                     "updated_at": "2021-06-28T17:47:38.773248"}
+                     "updated_at": "2021-06-28T17:47:38.773248",
+                     "__class__": "Amenity"}
         test_1 = Amenity(**test_dict)
         self.assertTrue(isinstance(test, Amenity))
         self.assertEqual(test_1.id, "ff02d7e0-4254-43b3-b867-d9decb0dda13")

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 '''Testing file for the class Place'''
+
 import unittest
 from models import place
 from models.place import Place
