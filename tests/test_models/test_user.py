@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Testing file for the class User'''
-
 import unittest
 from models.user import User
 import datetime

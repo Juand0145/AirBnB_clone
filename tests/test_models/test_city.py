@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Testing file for the class City'''
-
 import unittest
 from models.city import City
 import datetime

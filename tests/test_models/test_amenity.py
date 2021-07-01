@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Testing file for the class Amenity'''
-
 import unittest
 from models.amenity import Amenity
 import datetime
