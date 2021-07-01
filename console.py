@@ -177,6 +177,60 @@ class HBNBCommand(cmd.Cmd):
                 setattr(object_to_update, attribute, new_value)
             object_to_update.save()
 
+    def do_BaseModel(self, line):
+        '''Creating the Method to execute BaseModel'''
+        arg = get_line(line)
+        command = arg[0] + " BaseModel"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
+    def do_City(self, line):
+        '''Creating the Method to execute City'''
+        arg = get_line(line)
+        command = arg[0] + " City"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
+    def do_Place(self, line):
+        '''Creating the Method to execute Place'''
+        arg = get_line(line)
+        command = arg[0] + " Place"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
+    def do_Review(self, line):
+        '''Creating the Method to execute Review'''
+        arg = get_line(line)
+        command = arg[0] + " Review"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
+    def do_State(self, line):
+        '''Creating the Method to execute State'''
+        arg = get_line(line)
+        command = arg[0] + " State"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
+    def do_User(self, line):
+        '''Creating the Method to execute User'''
+        arg = get_line(line)
+        command = arg[0] + " User"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
 
 def cast_variable(variable, new_type):
     '''Recognize the type of the varible to be change i the update function'''
@@ -194,6 +248,23 @@ def cast_variable(variable, new_type):
 
     return variable
 
+
+def get_line(line):
+    '''Creating the argumments for the specific class methods'''
+
+    change_line = ""
+    characters = ["\"", "(", ")", ".", ","]
+
+    for char in line:
+        if char in characters:
+            change_line += " "
+
+        else:
+            change_line += char
+
+    argumments = change_line.split()
+
+    return argumments
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
