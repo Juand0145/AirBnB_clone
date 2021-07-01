@@ -253,7 +253,7 @@ def get_line(line):
     '''Creating the argumments for the specific class methods'''
 
     change_line = ""
-    characters = ["\"", "(", ")", ".", ","]
+    characters = ["\"", "(", ")", ".", ",", "}", "{", ":"]
 
     for char in line:
         if char in characters:
