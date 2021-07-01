@@ -4,5 +4,6 @@
 import unittest
 import console
 
+
 class TestConsole(unittest.TestCase):
     '''Class to test the console'''
