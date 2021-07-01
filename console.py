@@ -186,6 +186,15 @@ class HBNBCommand(cmd.Cmd):
             command += " " + arg[i]
         self.onecmd(command)
 
+    def do_Amenity(self, line):
+        '''Creating the Method to execute Amenity'''
+        arg = get_line(line)
+        command = arg[0] + " Amenity"
+
+        for i in range(1, len(arg)):
+            command += " " + arg[i]
+        self.onecmd(command)
+
     def do_City(self, line):
         '''Creating the Method to execute City'''
         arg = get_line(line)
