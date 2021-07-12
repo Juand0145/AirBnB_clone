@@ -62,7 +62,49 @@ section.filters button:hover
 .popover
 {
     background:  #FAFAFA;
-    border: 1pxsolid #DDDDDD;
     border-radius: 4px;
-    
+    list-style-type: none;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border: 1pxsolid #DDDDDD;
+    display: none;
+    position:relative;
+    z-index: 1;
+}
+
+.popover h2
+{
+    margin-left: -10px;
+    margin-top: 30px;
+}
+
+.locations .popover ul
+{
+    margin-left: -30px;
+    margin-bottom: 40px;
+    margin-top: -15px;
+    list-style-type: none;
+}
+
+.locations:hover .popover
+{
+    display: block;
+}
+
+.amenities .popover
+{
+    padding-bottom: 40px;
+    padding-top: 10px;
+	padding-right: 300px;
+}
+
+.amenities .popover li
+{
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+.amenities:hover .popover
+{
+	display: block;
 }
